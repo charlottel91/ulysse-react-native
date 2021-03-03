@@ -7,7 +7,6 @@ import { useLazyQuery } from '@apollo/client';
 import { LOGIN } from '../../apollo/queries/login';
 
 export default function SignIn() {
-    // const classes = useStyles();
     // // const history = useHistory();
 
     const [email, setEmail] = useState('')
@@ -16,33 +15,35 @@ export default function SignIn() {
     console.log(email, password);
 
 
-    // const [login, { data }] = useLazyQuery(LOGIN);
+    const [login, { data }] = useLazyQuery(LOGIN);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         await login({
-    //             variables: {
-    //                 email: state.email,
-    //                 password: state.password,
-    //             },
-    //         });
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
-    // useEffect(() => {
-    //     if (data?.login?.token) {
-    //         localStorage.setItem('token', data.login.token);
-    //         // history.push('/');
-    //     }
-    // }, [data]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await login({
+                variables: {
+                    email: email,
+                    password: password,
+                },
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    useEffect(() => {
+        if (data?.login?.token) {
+            alert('hhhhh')
+            // localStorage.setItem('token', data.login.token);
+            // history.push('/');
+        }
+    }, [data]);
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Connecte toi</Text>
             <TextInput style={styles.input} value={email} onChangeText={e => setEmail(e)} placeholder='email' autoCompleteType='email' name='email' />
             <TextInput style={styles.input} value={password} onChangeText={e => setPassword(e)} placeholder='mot de passe' autoCompleteType='password' name='password' />
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
                 <Text style={styles.textButton}>Se connecter</Text>
             </TouchableOpacity>
         </View>
