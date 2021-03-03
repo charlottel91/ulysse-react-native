@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 // import { Link, useHistory } from 'react-router-dom';
 
@@ -13,7 +14,6 @@ export default function SignIn() {
     const [password, setPassword] = useState('')
 
     console.log(email, password);
-
 
     const [login, { data }] = useLazyQuery(LOGIN);
 
@@ -32,8 +32,8 @@ export default function SignIn() {
     };
     useEffect(() => {
         if (data?.login?.token) {
-            alert('hhhhh')
-            // localStorage.setItem('token', data.login.token);
+            alert(data?.login?.token)
+            AsyncStorage.setItem('token', data.login.token);
             // history.push('/');
         }
     }, [data]);
