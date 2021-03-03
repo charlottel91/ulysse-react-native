@@ -10,16 +10,13 @@ export default function SignIn() {
     // const classes = useStyles();
     // // const history = useHistory();
 
-    // const [state, setState] = useState({
-    //     email: '',
-    //     password: '',
-    // });
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    console.log(email, password);
+
 
     // const [login, { data }] = useLazyQuery(LOGIN);
-
-    // const handleInputChange = ({ target: { name, value } }) => {
-    //     setState({ ...state, [name]: value });
-    // };
 
     // const handleSubmit = async (e) => {
     //     e.preventDefault();
@@ -43,8 +40,8 @@ export default function SignIn() {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Connecte toi</Text>
-            <TextInput style={styles.input} placeholder='email' autoCompleteType='email' />
-            <TextInput style={styles.input} placeholder='mot de passe' autoCompleteType='password' />
+            <TextInput style={styles.input} value={email} onChangeText={e => setEmail(e)} placeholder='email' autoCompleteType='email' name='email' />
+            <TextInput style={styles.input} value={password} onChangeText={e => setPassword(e)} placeholder='mot de passe' autoCompleteType='password' name='password' />
             <TouchableOpacity style={styles.button}>
                 <Text style={styles.textButton}>Se connecter</Text>
             </TouchableOpacity>
