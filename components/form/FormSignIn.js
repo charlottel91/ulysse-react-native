@@ -63,17 +63,20 @@ const styles = StyleSheet.create({
     title: {
         color: '#fefefe',
         fontSize: 30,
+        marginBottom: 30
     },
     input: {
         backgroundColor: 'white',
-        margin: 10,
+        margin: 15,
+        paddingLeft: 10,
         width: '80%',
         height: 50
     },
     button: {
         backgroundColor: '#E1755E',
         width: '40%',
-        height: 40
+        height: 40,
+        marginTop: 20
     },
     textButton: {
         color: '#fefefe',
