@@ -32,9 +32,7 @@ export default function SignIn() {
     };
     useEffect(() => {
         if (data?.login?.token) {
-            alert(data?.login?.token)
             AsyncStorage.setItem('token', data.login.token);
-            // history.push('/');
         }
     }, [data]);
 

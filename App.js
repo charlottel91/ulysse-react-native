@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/client';
 import api from './apollo';
 import { LoginContext, isLoggedIn } from './context/login';
@@ -9,6 +9,7 @@ import { StatusBar, StyleSheet, View } from 'react-native';
 import FormSignIn from './components/form/FormSignIn'
 
 export default function App() {
+  const [userToken, setUserToken] = useState()
   return (
     <ApolloProvider client={api}>
       <LoginContext.Provider value={isLoggedIn}>
@@ -21,8 +22,7 @@ export default function App() {
     // <NavigationContainer>
     //   <NavigationContainer>
     //     <Stack.Navigator>
-    //       <Stack.Screen name="sign-in" component={SignIn} />
-    //       <Stack.Screen name="sign-up" component={SignUp} />
+    //       <Stack.Screen name="Home" component={Homepage} />
     //     </Stack.Navigator>
     //   </NavigationContainer>
     // </NavigationContainer>
