@@ -5,7 +5,7 @@ import { useLazyQuery } from '@apollo/client';
 
 import { LOGIN } from '../../apollo/queries/login';
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -28,6 +28,9 @@ export default function SignIn() {
     useEffect(() => {
         if (data?.login?.token) {
             AsyncStorage.setItem('token', data.login.token);
+            navigation.navigate('Root', { screen: 'Home' })
+            setEmail('')
+            setPassword('')
         }
     }, [data]);
 
