@@ -18,8 +18,12 @@ export default function App() {
   useEffect(() => {
     setUserToken(null)
     const bootstrapAsync = async () => {
+      let token = null
       try {
-        await setUserToken(AsyncStorage.getItem('userToken'));
+        token = await AsyncStorage.getItem('userToken');
+        if (token.length > 0) {
+          setUserToken(token)
+        }
       } catch (e) {
         alert('Ton identifiant ou ton mot de passe sont mauvais.')
       }
@@ -33,9 +37,8 @@ export default function App() {
         <StatusBar />
         <NavigationContainer>
           <Stack.Navigator>
-            {/* {userToken === null ? <Stack.Screen name="SignIn" component={SignIn} />
-              : <Stack.Screen name="Home" component={Homepage} />} */}
-            <Stack.Screen name="SignIn" component={SignIn} />
+            {userToken ? <Stack.Screen name="SignIn" component={SignIn} />
+              : <Stack.Screen name="Home" component={Homepage} />}
           </Stack.Navigator>
         </NavigationContainer>
       </LoginContext.Provider>

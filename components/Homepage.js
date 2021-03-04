@@ -1,19 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import React from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
-export default function Homepage({ navigation }) {
-
-    const handleSubmit = () => {
-        AsyncStorage.clear()
-    };
-
+export default function Homepage() {
     return (
         <View style={styles.container}>
             <Text style={{ fontSize: 25, color: "#fefefe" }}>Bienvenue sur Ulysse</Text>
-            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                <Text style={styles.textButton}>Se déconnecter</Text>
-            </TouchableOpacity>
         </View>
     )
 }

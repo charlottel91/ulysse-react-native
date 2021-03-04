@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
-// import { Link, useHistory } from 'react-router-dom';
-
 import { useLazyQuery } from '@apollo/client';
 
 import { LOGIN } from '../../apollo/queries/login';
 
 export default function SignIn() {
-    // // const history = useHistory();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    console.log(email, password);
 
     const [login, { data }] = useLazyQuery(LOGIN);
 
